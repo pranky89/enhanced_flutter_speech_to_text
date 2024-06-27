@@ -1,18 +1,15 @@
+import 'package:google_fonts/google_fonts.dart'; // Add this for custom fonts
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
-import 'package:speech_to_text/speech_to_text.dart' as stt;
-import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'dart:async';
-
-import '../models/speech_provider.dart';
+import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+import 'provider.dart'; // your provider file, make sure to change it.....
+import 'package:shared_preferences/shared_preferences.dart';
 
 class PhoneCallScreen extends StatefulWidget {
-  final String botName;
-
   const PhoneCallScreen({
     Key? key,
-    required this.botName,
   }) : super(key: key);
 
   @override
@@ -24,6 +21,19 @@ class _PhoneCallScreenState extends State<PhoneCallScreen> {
   bool _isInitialized = false;
   Duration _callDuration = Duration.zero;
   Timer? _timer;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  void _startCallTimer() {
+    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      setState(() {
+        _callDuration += Duration(seconds: 1);
+      });
+    });
+  }
 
   @override
   void didChangeDependencies() {
@@ -38,22 +48,16 @@ class _PhoneCallScreenState extends State<PhoneCallScreen> {
   Future<void> _initializeSpeechProvider() async {
     if (_speechProvider != null) {
       _startCallTimer();
-      await _speechProvider!.initializeForMe(botName: widget.botName);
+      await _speechProvider!.initializeForMe(); //this will start everything
     }
   }
 
-  void _startCallTimer() {
-    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
-      setState(() {
-        _callDuration += Duration(seconds: 1);
-      });
-    });
-  }
 
   @override
   void dispose() {
-    _timer?.cancel();
+    printDebugStatement('Calling dispose for phone page..');
     super.dispose();
+    printDebugStatement('Dispose ran for phone page');
   }
 
   @override
