@@ -16,6 +16,13 @@ This library integrates seamlessly with Provider and SharedPreferences for state
 - **Enhanced State Management**: Utilizes Provider for effective state management.
 - **Consistent User Interaction**: Ensures proper stopping and starting of the listening process.
 
+
+## Contribution
+I welcome contributions! Please read our contributing guidelines before submitting a pull request.
+
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
 ## Getting Started
 
 To use this library, simply add the following dependency to your `pubspec.yaml`:
@@ -27,8 +34,4 @@ dependencies:
       url: https://github.com/yourusername/enhanced_speech_to_text.git
 
 
-Contribution
-I welcome contributions! Please read our contributing guidelines before submitting a pull request.
 
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
