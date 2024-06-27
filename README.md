@@ -25,3 +25,10 @@ dependencies:
   enhanced_speech_to_text:
     git:
       url: https://github.com/yourusername/enhanced_speech_to_text.git
+
+
+Contribution
+I welcome contributions! Please read our contributing guidelines before submitting a pull request.
+
+License
+This project is licensed under the MIT License - see the LICENSE file for details.
